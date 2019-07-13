@@ -1,0 +1,52 @@
+#!/bin/bash
+
+step () {
+    echo -e "\e[1;35m==> $1\e[0m"
+}
+
+SCRIPT_DIR=`dirname $0`
+
+#-------------------------------------------------------------------------------
+step 'Update'
+#-------------------------------------------------------------------------------
+
+sudo pacman -Syu
+
+#-------------------------------------------------------------------------------
+step 'Plasma'
+#-------------------------------------------------------------------------------
+
+sudo pacman -S pacman-contrib plasma-meta
+
+#-------------------------------------------------------------------------------
+step 'Soft'
+#-------------------------------------------------------------------------------
+
+sudo pacman -S dolphin konsole kwrite chromium ttf-liberation packagekit-qt5 ffmpegthumbs kdegraphics-thumbnailers noto-fonts noto-fonts-cjk noto-fonts-emoji ark unrar kmahjongg kpatience gwenview okular ktorrent kcalc spectacle kwalletmanager mpv youtube-dl wget neofetch php code
+
+#-------------------------------------------------------------------------------
+step 'Swap'
+#-------------------------------------------------------------------------------
+
+sudo fallocate -l 1G    /swapfile
+sudo chmod 600          /swapfile
+sudo mkswap             /swapfile
+sudo swapon             /swapfile
+sudo sh -c 'echo /swapfile none swap defaults 0 0 >> /etc/fstab'
+
+#-------------------------------------------------------------------------------
+step 'Config'
+#-------------------------------------------------------------------------------
+
+mkdir -p ~/.config
+
+cp  -f  $SCRIPT_DIR/bash/.bashrc            ~/
+cp  -rf $SCRIPT_DIR/mpv                     ~/.config/
+
+sudo chown -R qtm:users                     $SCRIPT_DIR/apps
+sudo chmod -R 777                           $SCRIPT_DIR/apps
+sudo cp $SCRIPT_DIR/apps/pacinfo            /usr/bin
+
+#-------------------------------------------------------------------------------
+step 'Done!'
+#-------------------------------------------------------------------------------
