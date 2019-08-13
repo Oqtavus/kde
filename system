@@ -73,12 +73,13 @@ step 'Sudoers'
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 #-------------------------------------------------------------------------------
-step 'Grub'
+step 'Systemd-Boot'
 #-------------------------------------------------------------------------------
 
-pacman -S grub os-prober polkit networkmanager
-grub-install /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
+bootctl install
+echo -e "timeout 5\ndefault arch" > /boot/loader/loader.conf
+echo -e "title ArchLinux\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=/dev/sda2 rw" > /boot/loader/entries/arch.conf
+echo -e "[Trigger]\nType = Package\nOperation = Upgrade\nTarget = systemd\n\n[Action]\nDescription = Updating systemd-boot\nWhen = PostTransaction\nExec = /usr/bin/bootctl update" > /etc/pacman.d/hooks/100-systemd-boot.hook
 
 #-------------------------------------------------------------------------------
 step 'Network'

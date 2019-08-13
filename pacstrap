@@ -8,13 +8,18 @@ step () {
 step 'Format'
 #-------------------------------------------------------------------------------
 
-mkfs.ext4 /dev/sda1
+mkfs.vfat -F32 /dev/sda1
+mkfs.f2fs /dev/sda2
 
 #-------------------------------------------------------------------------------
 step 'Mount'
 #-------------------------------------------------------------------------------
 
-mount /dev/sda1 /mnt
+mount /dev/sda2 /mnt
+mkdir /mnt/boot
+mkdir /mnt/home
+mount /dev/sda1 /mnt/boot
+mount /dev/sda3 /mnt/home
 
 #-------------------------------------------------------------------------------
 step 'Mirror'
@@ -27,7 +32,7 @@ echo 'Server = https://archlinux.ip-connect.vn.ua/$repo/os/$arch' >> /etc/pacman
 step 'Pacstrap'
 #-------------------------------------------------------------------------------
 
-pacstrap /mnt base base-devel
+pacstrap /mnt base base-devel pacman-contrib polkit networkmanager git f2fs-tools 
 
 #-------------------------------------------------------------------------------
 step 'Fstab'
