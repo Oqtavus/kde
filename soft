@@ -22,13 +22,13 @@ sudo pacman -S plasma-meta
 step 'Soft'
 #-------------------------------------------------------------------------------
 
-sudo pacman -S dolphin konsole kwrite chromium packagekit-qt5 ffmpegthumbs kdegraphics-thumbnailers noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-fira-code ttf-liberation ark unrar kmahjongg kpatience gwenview okular ktorrent kcalc spectacle kwalletmanager ntfs-3g mpv youtube-dl wget neofetch php code
+sudo pacman -S dolphin konsole kwrite chromium ffmpegthumbs kdegraphics-thumbnailers noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-fira-code ttf-liberation ark unrar kmahjongg kpatience gwenview okular qbittorrent kcalc spectacle kwalletmanager kdeconnect sshfs ntfs-3g mpv youtube-dl wget neofetch php code
 
 #-------------------------------------------------------------------------------
 step 'Swap'
 #-------------------------------------------------------------------------------
 
-dd if=/dev/zero of=/swapfile bs=1M count=1024 status=progress
+sudo dd if=/dev/zero of=/swapfile bs=1M count=1024 status=progress
 sudo chmod 600          /swapfile
 sudo mkswap             /swapfile
 sudo swapon             /swapfile
