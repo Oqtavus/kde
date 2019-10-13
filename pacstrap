@@ -9,7 +9,8 @@ step 'Format'
 #-------------------------------------------------------------------------------
 
 mkfs.vfat -F32 /dev/sda1
-mkfs.f2fs -f   /dev/sda2
+mkfs.f2fs -f   /dev/sda2 -l "ROOT"
+#mkfs.f2fs -f   /dev/sda3 -l "HOME"
 
 #-------------------------------------------------------------------------------
 step 'Mount'
@@ -32,7 +33,7 @@ echo 'Server = https://archlinux.ip-connect.vn.ua/$repo/os/$arch' >> /etc/pacman
 step 'Pacstrap'
 #-------------------------------------------------------------------------------
 
-pacstrap /mnt base base-devel pacman-contrib polkit networkmanager git f2fs-tools 
+pacstrap /mnt base base-devel linux linux-firmware pacman-contrib polkit networkmanager git f2fs-tools
 
 #-------------------------------------------------------------------------------
 step 'Fstab'
