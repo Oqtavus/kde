@@ -8,9 +8,10 @@ step () {
 step 'Format'
 #-------------------------------------------------------------------------------
 
-mkfs.vfat -F32 /dev/sda1
-mkfs.f2fs -f   /dev/sda2 -l "ROOT"
-#mkfs.f2fs -f   /dev/sda3 -l "HOME"
+mkfs.fat  -F 32 /dev/sda1
+fatlabel        /dev/sda1    "BOOT"
+mkfs.f2fs -f    /dev/sda2 -l "ROOT"
+mkfs.f2fs -f    /dev/sda3 -l "HOME"
 
 #-------------------------------------------------------------------------------
 step 'Mount'

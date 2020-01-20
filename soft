@@ -22,7 +22,7 @@ sudo pacman -S plasma-meta
 step 'Soft'
 #-------------------------------------------------------------------------------
 
-sudo pacman -S dolphin konsole kwrite chromium ffmpegthumbs kdegraphics-thumbnailers noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-fira-code ttf-liberation ark unrar kmahjongg kpatience gwenview okular qbittorrent kcalc spectacle kwalletmanager kdeconnect sshfs ntfs-3g mpv youtube-dl wget neofetch php code
+sudo pacman -S dolphin konsole kate chromium ffmpegthumbs kdegraphics-thumbnailers kdialog libva-mesa-driver noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-fira-code ttf-liberation ark unrar kmahjongg kpatience gwenview okular qbittorrent kcalc spectacle kwalletmanager kdeconnect sshfs ntfs-3g mpv youtube-dl wget neofetch php composer unzip code
 
 #-------------------------------------------------------------------------------
 step 'Swap'
@@ -40,7 +40,7 @@ step 'Data'
 
 sudo mkdir -p                               /media/data
 sudo chown -R qtm:users                     /media/data
-sudo sh -c 'echo /dev/sdb1 /media/data ext4 defaults,noatime 0 2 >> /etc/fstab'
+sudo sh -c 'echo LABEL=DATA /media/data ext4 defaults,noatime,nofail 0 2 >> /etc/fstab'
 
 #-------------------------------------------------------------------------------
 step 'Config'
