@@ -22,7 +22,7 @@ sudo pacman -S plasma-meta
 step 'Soft'
 #-------------------------------------------------------------------------------
 
-sudo pacman -S dolphin konsole kwrite chromium ffmpegthumbs kdegraphics-thumbnailers kdialog libva-mesa-driver noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-fira-code ttf-liberation ark unrar kmahjongg kpatience nomacs okular qbittorrent kcalc spectacle kwalletmanager kdeconnect sshfs ntfs-3g mpv youtube-dl wget neofetch php composer unzip code
+sudo pacman -S dolphin konsole kwrite chromium ffmpegthumbs kdegraphics-thumbnailers kdialog libva-mesa-driver noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-fira-code ttf-liberation ark unrar kmahjongg kpatience nomacs okular qbittorrent kcalc spectacle kwalletmanager kdeconnect sshfs ntfs-3g mpv youtube-dl wget neofetch php xdebug composer unzip code
 
 #-------------------------------------------------------------------------------
 step 'Swap'
