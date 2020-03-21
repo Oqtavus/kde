@@ -46,7 +46,7 @@ echo '127.0.0.1 desktop.localdomain desktop' >> /etc/hosts
 step 'Initcpio'
 #-------------------------------------------------------------------------------
 
-mkinitcpio -p linux
+mkinitcpio -p linux-zen
 
 #-------------------------------------------------------------------------------
 step 'Root password'
@@ -79,7 +79,7 @@ step 'Systemd-Boot'
 bootctl install
 mkdir -p /etc/pacman.d/hooks
 echo -e "timeout 5\ndefault arch" > /boot/loader/loader.conf
-echo -e "title ArchLinux\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=LABEL=ROOT rw" > /boot/loader/entries/arch.conf
+echo -e "title ArchLinux\nlinux /vmlinuz-linux-zen\ninitrd /initramfs-linux-zen.img\noptions root=LABEL=ROOT rw" > /boot/loader/entries/arch.conf
 echo -e "[Trigger]\nType = Package\nOperation = Upgrade\nTarget = systemd\n\n[Action]\nDescription = Updating systemd-boot\nWhen = PostTransaction\nExec = /usr/bin/bootctl update" > /etc/pacman.d/hooks/100-systemd-boot.hook
 
 #-------------------------------------------------------------------------------
