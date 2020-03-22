@@ -34,7 +34,7 @@ echo 'Server = https://archlinux.ip-connect.vn.ua/$repo/os/$arch' >> /etc/pacman
 step 'Pacstrap'
 #-------------------------------------------------------------------------------
 
-pacstrap /mnt base base-devel linux-zen linux-firmware pacman-contrib polkit networkmanager git f2fs-tools
+pacstrap /mnt base base-devel linux-zen linux-firmware pacman-contrib polkit networkmanager git f2fs-tools nano
 
 #-------------------------------------------------------------------------------
 step 'Fstab'
